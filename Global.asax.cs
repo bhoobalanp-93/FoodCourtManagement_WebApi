@@ -21,6 +21,6 @@ namespace FoodCourtManagement
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<FoodCourtContext>());
-        }
+        }  
     }
 }

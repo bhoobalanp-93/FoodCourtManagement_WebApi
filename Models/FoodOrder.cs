@@ -12,6 +12,7 @@ namespace FoodCourtManagement.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Order_ID { get; set; }
+        public int RestaurantID { get; set; }
         public int orderCustomerId { get; set; }
         public int OrderPrice { get; set; }
         public string paymentMode { get; set; }

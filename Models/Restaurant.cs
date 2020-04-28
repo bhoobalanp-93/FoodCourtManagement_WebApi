@@ -23,9 +23,11 @@ namespace FoodCourtManagement.Models
         public string rest_loaction { get; set; }
         public string rest_Address { get; set; }
         public string rest_DeliveryTime { get; set; }
+        public double rest_Rating { get; set; }
+        public string rest_image { get; set; }
 
         [ForeignKey("RestaurantType")]
         public int restaurantType_id { get; set; }
-        public virtual RestaurantType RestaurantType { get; set; }
+        public RestaurantType RestaurantType { get; set; }
     }
 }

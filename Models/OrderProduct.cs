@@ -10,6 +10,7 @@ namespace FoodCourtManagement.Models
     public class OrderProduct
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int orderProductKey { get; set; }
         public int OrderId { get; set; }
         public int fProductid { get; set; }

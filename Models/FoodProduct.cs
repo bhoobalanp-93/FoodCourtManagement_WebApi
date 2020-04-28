@@ -15,10 +15,11 @@ namespace FoodCourtManagement.Models
         public int foodProductID { get; set; }
         public string foodProductName { get; set; }
         public int foodProductPrice { get; set; }
+        public string foodProductImage { get; set; }
 
         [ForeignKey("FoodCategory")]
         public int fProductCatId { get; set; }
-        public virtual FoodCategory FoodCategory { get; set; }
+        public FoodCategory FoodCategory { get; set; }
 
     }
 }

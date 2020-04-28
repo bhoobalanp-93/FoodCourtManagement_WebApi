@@ -18,6 +18,11 @@ namespace FoodCourtManagement.Models
         public string cust_ContactNo { get; set; }
         public string cust_MailID { get; set; }
         public string cust_Address { get; set; }
+        public string Cust_city { get; set; }
+        public string Cust_password { get; set; }
+        public string Cust_gender { get; set; }
+
+        public ICollection<FoodOrder> foodOrder { get; set; }
 
     }
 }

@@ -7,12 +7,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using AngularJwt_Api.Business;
 using FoodCourtManagement.DAL;
 using FoodCourtManagement.Models;
 
 namespace FoodCourtManagement.Controllers
 {
+
     public class CustomersController : ApiController
     {
         private FoodCourtContext db = new FoodCourtContext();
@@ -36,6 +39,17 @@ namespace FoodCourtManagement.Controllers
             return Ok(customer);
         }
 
+        [ResponseType(typeof(Customer))]
+        public IHttpActionResult GetloggedCustomer(string userEmail)
+        {
+            Customer customer = db.customers.SingleOrDefault(p => p.cust_MailID == userEmail) as Customer;
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(customer);
+        }
         // PUT: api/Customers/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCustomer(int id, Customer customer)
@@ -85,6 +99,16 @@ namespace FoodCourtManagement.Controllers
                 return BadRequest("Customer Already Exists");
             }
 
+            customer.Cust_gender = customer.Cust_gender.Trim();
+            if (customer.Cust_gender == "1")
+                customer.Cust_gender = "Male";
+            else if (customer.Cust_gender == "2")
+            {
+                customer.Cust_gender = "Female";
+            }
+            else
+                customer.Cust_gender = "Others";
+
             db.customers.Add(customer);
             db.SaveChanges();
 
@@ -106,7 +130,6 @@ namespace FoodCourtManagement.Controllers
 
             return Ok(customer);
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
